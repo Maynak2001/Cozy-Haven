@@ -80,13 +80,12 @@ const About = () => {
 
           <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
             <p>
-              Welcome to <span className="text-white font-bold tracking-wide">The Legacy Vault</span>.
-              We are a dedicated space where every masterpiece created by our
-              community is preserved in its original glory.
+              Welcome to <span className="text-white font-bold tracking-wide">Cozy Haven</span> 🏡✨ — 
+              our little corner of the internet where blocky memories never fade. Think of it as a digital scrapbook, keeping every beautiful build and crazy contraption safe and sound.
             </p>
             <p>
-              From massive castle builds to intricate redstone machines,
-              nothing is ever lost. Explore the evolution of our world.
+              From the humblest starter houses to ticking redstone wonders, we cherish every piece of our world. 
+              This isn't just a server... it's a warm hug to the community and the legends who built it, block by block.
             </p>
           </div>
 
