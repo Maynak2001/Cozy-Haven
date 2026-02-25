@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+// Aapke naye Particles component ko import karein
+import Particles from './Particles';
 
 const About = () => {
   const scrollRef = useRef(null);
@@ -12,7 +14,7 @@ const About = () => {
     { id: 5, title: "Community Square", url: "https://placehold.co/800x450/111827/white?text=Community+Square" },
   ];
 
-  // Auto-scroll logic remains exactly the same
+  // Auto-scroll logic for carousel
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     let scrollAmount = 0;
@@ -33,19 +35,37 @@ const About = () => {
   }, []);
 
   return (
-    <section className="py-24 px-8 bg-gray-900 text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-        
-        {/* Left Side: Animated Content */}
-        <motion.div 
+    <section className="relative py-24 px-8 bg-gray-900 text-white overflow-hidden">
+
+      {/* 3D PARTICLE BACKGROUND START */}
+      <div className="absolute inset-0 w-full h-full">
+        <Particles
+          particleColors={["#ff57f1"]}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.5}
+          particleBaseSize={100}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+          pixelRatio="1"
+        />
+      </div>
+      {/* 3D PARTICLE BACKGROUND END */}
+
+      {/* Main Content (z-10 to stay above particles) */}
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+
+        {/* Left Side: Animated Text Content */}
+        <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="lg:w-2/5 space-y-8 z-10"
+          className="lg:w-2/5 space-y-8"
         >
           <header>
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -53,67 +73,50 @@ const About = () => {
             >
               Our Legacy
             </motion.span>
-            <h2 className="text-6xl font-black mt-2 leading-tight">
+            <h2 className="text-6xl font-black mt-2 leading-tight drop-shadow-md">
               A Living <br /> <span className="text-blue-500">Museum.</span>
             </h2>
           </header>
-          
-          <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
+
+          <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
             <p>
-              Welcome to <span className="text-white font-semibold">The Legacy Vault</span>. 
-              We are a dedicated space where every masterpiece created by our 
+              Welcome to <span className="text-white font-bold tracking-wide">The Legacy Vault</span>.
+              We are a dedicated space where every masterpiece created by our
               community is preserved in its original glory.
             </p>
             <p>
-              From massive castle builds to intricate redstone machines, 
+              From massive castle builds to intricate redstone machines,
               nothing is ever lost. Explore the evolution of our world.
             </p>
           </div>
-          
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
+
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-3 overflow-hidden font-bold rounded-full border border-blue-500 text-white shadow-2xl transition-all duration-300 hover:bg-blue-600"
+            className="group relative px-8 py-3 overflow-hidden font-bold rounded-full bg-transparent border-2 border-blue-500 text-white shadow-lg transition-all duration-300 hover:bg-blue-600/20 backdrop-blur-sm cursor-pointer"
           >
-            Check Out The Builds!
+            MEET THE ARCHITECTS
           </motion.button>
         </motion.div>
 
         {/* Right Side: Animated Auto-Scrolling Carousel */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="lg:w-3/5 w-full relative"
+          className="lg:w-3/5 w-full"
         >
-          <div 
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-hidden whitespace-nowrap py-10"
+          <motion.div
+            whileHover={{ scale: 1.05, rotateY: 5 }}
+            className="relative overflow-hidden"
           >
-            {screenshots.map((img) => (
-              <motion.div 
-                key={img.id} 
-                whileHover={{ y: -10 }} // Subtle lift on hover
-                className="inline-block min-w-[350px] md:min-w-[500px] aspect-video relative group overflow-hidden rounded-2xl border border-gray-800 shadow-2xl"
-              >
-                <img 
-                  src={img.url} 
-                  alt={img.title} 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[50%] group-hover:grayscale-0"
-                />
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-blue-400 font-mono text-xs mb-1 uppercase tracking-widest">Exhibit Selection</p>
-                  <h3 className="text-2xl font-bold">{img.title}</h3>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Fade effect edges */}
-          <div className="absolute top-0 left-0 h-full w-20 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none"></div>
-          <div className="absolute top-0 right-0 h-full w-20 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"></div>
+            <img
+              src="/WE3.png"
+              alt="Legacy Vault"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
         </motion.div>
 
       </div>

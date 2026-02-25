@@ -5,7 +5,7 @@ const WelcomeScreen = ({ onFinished }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onFinished();
-    }, 4000);
+    }, 5500);
 
     return () => clearTimeout(timer);
   }, [onFinished]);

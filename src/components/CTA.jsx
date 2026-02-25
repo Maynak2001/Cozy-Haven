@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
 
-const CTA = () => {
+const CTA = memo(() => {
   return (
     <section className="relative h-screen min-h-[600px] w-full flex items-center justify-center overflow-hidden">
       
@@ -12,6 +12,7 @@ const CTA = () => {
         loop
         muted
         playsInline
+        preload="metadata"
         className="absolute z-20 w-full h-full object-cover"
       >
         {/* Yahan apni video ka path daalo (public folder mein rakho video) */}
@@ -40,7 +41,8 @@ const CTA = () => {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-tight text-black"
+          className="text-5xl md:text-5xl font-black mb-8 text-black"
+          style={{ fontFamily: 'Indie Flower, cursive'}}
         >
           TO THE BRAVE EXPLORERS <br/> & ARCHITECTS
         </motion.h2>
@@ -51,6 +53,7 @@ const CTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           className="max-w-3xl mx-auto"
+          style={{ fontFamily: 'Indie Flower, cursive'}}
         >
           <p className="text-xl md:text-2xl text-gray-900 leading-relaxed font-bold">
             Ye safar aapke bina mumkin nahi tha. Aapki har ek block-placement, har ek kahani, 
@@ -67,13 +70,13 @@ const CTA = () => {
           transition={{ delay: 0.4 }}
           className="mt-16 pt-12 border-t border-black/10 inline-block"
         >
-          <p className="text-sm font-black tracking-[0.4em] text-black uppercase">
+          <p className="text-sm font-black tracking-[0.4em] text-gray-900 uppercase">
             With Love, MAYNAK (ENDER 0305)
           </p>
         </motion.div>
       </div>
     </section>
   );
-};
+});
 
 export default CTA;
